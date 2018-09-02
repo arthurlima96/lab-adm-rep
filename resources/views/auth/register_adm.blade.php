@@ -40,6 +40,18 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="tipo" class="form-control"  name="tipo">
+                                    @foreach ($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->nome}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
 
                             <div class="col-md-6">

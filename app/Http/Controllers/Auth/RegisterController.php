@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -37,7 +39,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+       // $this->middleware('guest');
+       //$this->middleware('guest');
     }
 
     /**
@@ -51,8 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'tipo' => 'required|max:255'
+            'password' => 'required|string|min:6|confirmed'
         ]);
     }
 
@@ -64,11 +66,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'tipo' => $data['tipo'],
-        ]);
+        if(isset($data['tipo'])){
+            $role  = Role::find($data['tipo']);
+        }else{
+            $role  = Role::where('nome', 'aluno')->first();
+        }
+
+        $aluno = new User();
+        $aluno->name =  $data['name'];
+        $aluno->email =  $data['email'];
+        $aluno->password = bcrypt($data['password']);
+        $aluno->save();
+        $aluno->roles()->attach($role);
+
+        return $aluno;
     }
+
+    protected function showRegistrationFormUsers()
+    {
+        Auth::user()->authorizeRoles('administrador');
+
+        $roles = Role::all(['id','nome']);
+
+        return view('auth.register_adm')->with('roles', $roles);
+    }
+
+    
 }
