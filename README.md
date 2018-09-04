@@ -21,8 +21,9 @@
 5 - Depois roda o comando  
 
     php artisan migrate:refresh --seed
-6 - Coloca o servidor pra rodar com 
+6 - Gera as chaves de encrypt e coloca o servidor pra rodar com os comandos abaixo 
     
+    php artisan key:generate
     php artisan serve
     
 6 - Depois acessa a URL /home e faz o login 
