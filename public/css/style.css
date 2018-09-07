@@ -1,0 +1,37 @@
+
+
+.title{
+     font-size: 2em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+
+.edit{background-color: #004085;}
+
+.delete{
+    background-color: #dc3545;
+}
+
+.actions{
+    padding: 6px;
+    color:  #fff;
+    text-decoration: none;
+    font-size:  1em;
+    margin:  0px 2px;
+}
+
+.actions:hover{
+
+    text-decoration:  none;
+    color:  #fff;
+
+}
+
+.show{
+  background-color: #0aa02c;
+}
+
+.btn-add{
+  margin-bottom: 10px;
+}
