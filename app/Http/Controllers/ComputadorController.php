@@ -13,6 +13,7 @@ class ComputadorController extends Controller
   private $computador;
 
 
+
       public function __construct(Computador $comp)
       {
         $this->computador = $comp;
