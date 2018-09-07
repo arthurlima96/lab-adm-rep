@@ -22,3 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cadastroUsers', 'Auth\RegisterController@showRegistrationFormUsers')->name('cadastro_users')->middleware('auth');
 
 
+Route::resource('/laboratorios','LaboratorioController');
+Route::resource('/computadores','ComputadorController');
+
+
+
