@@ -1,4 +1,4 @@
-@extends('template.template1')
+@extends('layouts.template1')
 
 @section('content')
 <h1 class="title">{{$title or ''}}</h1>
