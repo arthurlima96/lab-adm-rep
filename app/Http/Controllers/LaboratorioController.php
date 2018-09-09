@@ -78,7 +78,7 @@ class LaboratorioController extends Controller
       $lab = $this->laboratorio->find($id);
       $title = "Atualizar Laboratório: {$lab->nome}";
 
-    return view('create-versao2',compact('title','lab'));
+    return view('create-update-lab',compact('title','lab'));
     }
 
 

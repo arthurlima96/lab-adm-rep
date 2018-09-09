@@ -19,11 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/cadastroUsers', 'Auth\RegisterController@showRegistrationFormUsers')->name('cadastro_users')->middleware('auth');
+Route::get('/usuarios', 'Auth\RegisterController@showRegistrationFormUsers')->name('cadastro_users')->middleware('auth');
+//Route::get('/tableUsers', 'Auth\RegisterController@showTableUsers')->name('table_users')->middleware('auth');
 
-
-Route::resource('/laboratorios','LaboratorioController');
-Route::resource('/computadores','ComputadorController');
+Route::resource('/usuarios','UsuarioController')->middleware('auth');
+Route::resource('/laboratorios','LaboratorioController')->middleware('auth');
+Route::resource('/computadores','ComputadorController')->middleware('auth');
 
 
 

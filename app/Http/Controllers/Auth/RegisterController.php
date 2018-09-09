@@ -66,11 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(isset($data['tipo'])){
-            $role  = Role::find($data['tipo']);
-        }else{
-            $role  = Role::where('nome', 'aluno')->first();
-        }
+       
+        $role  = Role::where('nome', 'aluno')->first();
 
         $aluno = new User();
         $aluno->name =  $data['name'];
@@ -80,6 +77,15 @@ class RegisterController extends Controller
         $aluno->roles()->attach($role);
 
         return $aluno;
+    }
+
+    protected function showTableUsers()
+    {
+        Auth::user()->authorizeRoles('administrador');
+
+        $usuarios = User::all();
+
+        return view('auth.table_user')->with('usuarios', $usuarios);
     }
 
     protected function showRegistrationFormUsers()

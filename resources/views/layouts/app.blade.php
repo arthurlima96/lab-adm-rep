@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href=" {{url( 'css/style.css' )}}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -36,8 +37,15 @@
                     <ul class="navbar-nav mr-auto">
                     @if( Auth::check() )
                         @if( Auth::user()->hasrole('administrador') )
-                            <li class="nav-item">
-                                <a class="nav-link"  href="{{ route('cadastro_users') }}">{{ __('Cadastrar Usuarios') }}</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Cadastro
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="/usuarios">{{ __('Usuario') }}</a>
+                                    <a class="dropdown-item" href="/laboratorios">Laboratorio</a>
+                                    <a class="dropdown-item" href="/computadores">Computador</a>
+                                </div>
                             </li>
                         @endif
                     @endif
