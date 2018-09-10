@@ -22,6 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usuarios', 'Auth\RegisterController@showRegistrationFormUsers')->name('cadastro_users')->middleware('auth');
 //Route::get('/tableUsers', 'Auth\RegisterController@showTableUsers')->name('table_users')->middleware('auth');
 
+Route::get('lab_computadores/{id}', 'LaboratorioController@todos_computadores')->name('lab_computadores');
+
+Route::post('reservar/{id}', 'ReservaController@efetuar_reserva')->name('reservar');
+
 Route::resource('/usuarios','UsuarioController')->middleware('auth');
 Route::resource('/laboratorios','LaboratorioController')->middleware('auth');
 Route::resource('/computadores','ComputadorController')->middleware('auth');

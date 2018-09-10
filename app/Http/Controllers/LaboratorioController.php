@@ -22,6 +22,13 @@ class LaboratorioController extends Controller
       return view('indexLab', compact('labs','title')); //chama a view que vai listar
     }
 
+    public function todos_computadores($id)
+    {
+      $title = "Escolha um Computador";
+      $computadores = $this->laboratorio->find($id)->computadores; 
+      return view('lab_home', compact('computadores','title')); 
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -14,4 +14,9 @@ class Computador extends Model
         {
            return $this->belongsTo(Laboratorio::class);
         }
+
+        public function reservas()
+        {
+                return $this->hasMany(Reserva::class,'computador_id');
+        }
 }

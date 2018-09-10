@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Laboratorio;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $labs = Laboratorio::all(['id','nome']);
+
+        return view('home')->with('laboratorios',  $labs);
     }
 }

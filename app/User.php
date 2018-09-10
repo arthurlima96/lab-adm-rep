@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return null !== $this->roles()->where('nome', $role)->first();
     }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class,'user_id');
+    }
 }
