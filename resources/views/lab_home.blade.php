@@ -24,7 +24,7 @@
                                             <p class="card-text">{{$computador->nome}}</p>
                                         </div>
                                         <div class="card-footer">
-                                            <form method="post" action="{{ route('reservar', $computador->id) }}">
+                                        <form method="post" action="{{ route('reservar', $computador->id) }}">
                                             {{ csrf_field() }}
                                             <input class="btn btn-primary btn-sm" type="submit" name="submit" value="Reservar">
                                         </form>

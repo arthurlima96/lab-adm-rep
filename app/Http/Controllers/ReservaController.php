@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Reserva;
 use App\Computador;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
     
 class ReservaController extends Controller
 {
@@ -30,4 +31,18 @@ class ReservaController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function encerrar_reserva($id)
+    {
+        $reserva = Reserva::find($id);
+        $reserva->saida = Carbon::now();
+        $reserva->save();
+
+        $computador = Computador::find($reserva->computador->id);
+        $computador->ativo = false;
+        $computador->save();
+
+        return redirect()->route('home');
+    }
+
 }

@@ -25,6 +25,7 @@ Route::get('/usuarios', 'Auth\RegisterController@showRegistrationFormUsers')->na
 Route::get('lab_computadores/{id}', 'LaboratorioController@todos_computadores')->name('lab_computadores');
 
 Route::post('reservar/{id}', 'ReservaController@efetuar_reserva')->name('reservar');
+Route::post('terminar/{id}', 'ReservaController@encerrar_reserva')->name('terminar');
 
 Route::resource('/usuarios','UsuarioController')->middleware('auth');
 Route::resource('/laboratorios','LaboratorioController')->middleware('auth');
